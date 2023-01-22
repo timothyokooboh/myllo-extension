@@ -12,5 +12,9 @@
         "32": "images/myllo_32x32.png",
         "48": "images/myllo_48x48.png",
         "128": "images/myllo_128x128.png"
-      }
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": ["activeTab", "scripting"]
 }
