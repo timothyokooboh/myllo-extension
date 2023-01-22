@@ -46,6 +46,14 @@ form {
 .form-control > input {
     width: 100%;
     padding: 10px;
+    border: none;
+    background-color: #eee;
+    border-radius: 5px;
+    transition: outline .2s ease;
+}
+
+.form-control > input:focus {
+    outline: 2px solid dodgerblue;
 }
 
 .submit-btn {
@@ -55,7 +63,7 @@ form {
     outline: none;
     border: none;
     border-radius: 5px;
-    margin-block-start: 10px;
+    margin-block-start: 20px;
     padding: 10px;
     cursor: pointer;
 }
