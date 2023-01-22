@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./popup.css">
+    <title>Myllo Extension</title>
+</head>
+<body>
+    <h1>
+        <img 
+            src="../images/myllo_32x32.png"
+            alt="myllo"
+            title="Myllo"
+            class="icon"
+        >
+        <span>Save to your reading list</span>
+    </h1>
+    <form>
+        <div class="form-control">
+            <label for="title">Title</label>
+            <input type="text" maxlength="60" id="title">
+        </div>
+
+        <div class="form-control">
+            <label for="url">URL</label>
+            <input type="url" id="url">
+        </div>
+
+        <button class="submit-btn">Add Resource</button>
+    </form>
+</body>
+</html>

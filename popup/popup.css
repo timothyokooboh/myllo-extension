@@ -1,0 +1,60 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    width: 300px;
+    background-color: #fff;
+    padding: 15px 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    font-size: 16px;
+    color: #333;
+    margin-block-end: 30px;
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 > .icon {
+    display: block;
+    margin-block-end: 10px;
+}
+
+form {
+    width: 100%;
+}
+
+.form-control {
+    margin-block-end: 20px;
+    width: 100%;
+}
+
+.form-control > label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333
+}
+
+.form-control > input {
+    width: 100%;
+    padding: 10px;
+}
+
+.submit-btn {
+    width: 100%;
+    color: #FFF;
+    background-color: dodgerblue;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    margin-block-start: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
