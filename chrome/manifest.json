@@ -1,26 +1,26 @@
 {
-    "manifest_version": 3,
-    "version": "1.0",
-    "name": "myllo",
-    "description": "An extension that adds resources to your reading list in myllo app",
-    "action": {
-        "default_popup": "./dist/index.html",
-        "default_icon": "images/myllo.png"
-    },
-    "icons": {
-        "16": "images/myllo_16x16.png",
-        "32": "images/myllo_32x32.png",
-        "48": "images/myllo_48x48.png",
-        "128": "images/myllo_128x128.png"
-    },
-    "content_scripts": [
-        {
-            "js": ["content.js"],
-            "matches": ["*://*/*"]
-        }
-    ],
-    "background": {
-        "service_worker": "background.js"
-    },
-    "permissions": ["activeTab", "storage"]
+  "manifest_version": 3,
+  "version": "1.0",
+  "name": "myllo",
+  "description": "An extension that adds resources to your reading list in myllo app",
+  "action": {
+    "default_popup": "./dist/index.html",
+    "default_icon": "images/myllo.png"
+  },
+  "icons": {
+    "16": "images/myllo_16x16.png",
+    "32": "images/myllo_32x32.png",
+    "48": "images/myllo_48x48.png",
+    "128": "images/myllo_128x128.png"
+  },
+  "content_scripts": [
+    {
+      "js": ["content.js"],
+      "matches": ["https://myllo.co/*"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["activeTab", "storage"]
 }
