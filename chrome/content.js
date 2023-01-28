@@ -1,7 +1,12 @@
 window.addEventListener("message", (event) => {
-    if (event.data.type === "auth_status") {
-        chrome.storage.local.set({
-            'myllo_user_id': event.data.text
-        })
+    if (event.data.type === "myllo_auth_user") {
+       
+
+        if(chrome.runtime?.id){
+            console.log(event.data)
+            chrome.storage.local.set({
+                'myllo_auth_user': event.data.user
+            })
+        }
     }
 })
