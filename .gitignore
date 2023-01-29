@@ -2,3 +2,4 @@
 node_modules/
 chrome/dist/
 .prettierrc.js
+.env
