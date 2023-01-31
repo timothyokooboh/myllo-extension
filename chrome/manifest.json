@@ -4,7 +4,7 @@
   "name": "myllo",
   "description": "An extension that adds resources to your reading list in myllo app",
   "action": {
-    "default_popup": "./dist/index.html",
+    "default_popup": "dist/index.html",
     "default_icon": "images/myllo.png"
   },
   "icons": {

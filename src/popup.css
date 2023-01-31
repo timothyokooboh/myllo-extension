@@ -1,69 +1,120 @@
 *,
 *::after,
 *::before {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    width: 300px;
-    background-color: #fff;
-    padding: 15px 25px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 300px;
+  background-color: #fff;
+  padding: 15px 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
 }
 
 h1 {
-    font-size: 16px;
-    color: #333;
-    margin-block-start: 0px;
-    margin-block-end: 30px;
-    text-transform: capitalize;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  font-size: 16px;
+  color: #333;
+  margin-block-start: 0px;
+  margin-block-end: 30px;
+  text-transform: capitalize;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 h1 > .icon {
-    display: block;
-    margin-block-end: 10px;
+  display: block;
+  margin-block-end: 10px;
 }
 
 form {
-    width: 100%;
+  width: 100%;
 }
 
 .form-control {
-    margin-block-end: 20px;
-    width: 100%;
+  margin-block-end: 20px;
+  width: 100%;
 }
 
 .form-control > label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333
+  display: block;
+  margin-bottom: 5px;
+  color: #0f0f0f;
 }
 
 .form-control > input {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    background-color: #eee;
-    border-radius: 5px;
-    transition: outline .2s ease;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #eee;
+  border-radius: 5px;
+  transition: outline 0.2s ease;
 }
 
 .form-control > input:focus {
-    outline: 2px solid dodgerblue;
+  outline: 2px solid dodgerblue;
+}
+
+select {
+  width: 100%;
+  padding: 7px;
+}
+
+.switch-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 5px;
+}
+
+.switch-btn-container > span {
+  margin-right: 10px;
+  color: #0f0f0f;
+}
+
+.switch-btn {
+  width: 30px;
+  height: 14px;
+  border-radius: 25px;
+  border: 1px solid dodgerblue;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding-inline: 2px;
+  transition: background-color 0.2s ease-out;
+}
+
+.switch-btn[data-visibility="public"] {
+  background-color: rgb(207, 235, 240);
+}
+
+.switch-btn__ring {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border-radius: 50%;
+  border: 1px solid dodgerblue;
+  transition: transform 0.3s;
+}
+
+.switch-btn[data-visibility="public"] .switch-btn__ring {
+  transform: translateX(16px);
+}
+
+.switch-btn[data-visibility="private"] .switch-btn__ring {
+  transform: none;
 }
 
 .submit-btn {
-    width: 100%;
-    color: #FFF;
-    background-color: dodgerblue;
-    outline: none;
-    border: none;
-    border-radius: 5px;
-    margin-block-start: 20px;
-    padding: 10px;
-    cursor: pointer;
+  width: 100%;
+  color: #fff;
+  background-color: dodgerblue;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin-block-start: 20px;
+  padding: 10px;
+  cursor: pointer;
 }

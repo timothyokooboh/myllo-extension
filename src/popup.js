@@ -3,6 +3,20 @@ import { functions } from "./firebase";
 const form = document.querySelector("#form");
 const titleField = document.querySelector("#title");
 const urlField = document.querySelector("#url");
+const categoryField = document.querySelector("#category");
+const switchBtn = document.querySelector("#switch-btn");
+let isVisibilityPublic = true;
+
+switchBtn.addEventListener("click", () => {
+  isVisibilityPublic = !isVisibilityPublic;
+
+  if (isVisibilityPublic) {
+    switchBtn.setAttribute("data-visibility", "public");
+  } else {
+    switchBtn.setAttribute("data-visibility", "private");
+  }
+});
+
 let user = null;
 
 const handleSubmit = async (event) => {
@@ -15,11 +29,11 @@ const handleSubmit = async (event) => {
     const res = await addResource({
       title: titleField.value,
       url: urlField.value,
-      visibility: "private",
-      user,
+      category: categoryField.value,
+      visibility: isVisibilityPublic ? "public" : "private",
       description: "",
-      category: "",
       tags: [],
+      user,
     });
 
     console.log(res.data);
@@ -41,7 +55,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
   // since only one tab should be active and in the current window at once
   // the return variable should only have one entry
   const activeTab = tabs[0];
-  titleField.value = activeTab?.title || "";
+  titleField.value = activeTab?.title?.slice(0, 61) || "";
   urlField.value = activeTab?.url || "";
 });
 

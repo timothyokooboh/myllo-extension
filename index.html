@@ -1,36 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./src/popup.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/popup.css" />
     <title>Myllo Extension</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>
-        <img 
-            src="./chrome/images/myllo_32x32.png"
-            alt="myllo"
-            title="Myllo"
-            class="icon"
-        >
-        <span>Save to your reading list</span>
+      <img
+        src="./chrome/images/myllo_32x32.png"
+        alt="myllo"
+        title="Myllo"
+        class="icon"
+      />
+      <span>Save to your reading list</span>
     </h1>
     <form id="form">
-        <div class="form-control">
-            <label for="title">Title</label>
-            <input type="text" maxlength="60" id="title" required>
-        </div>
+      <div class="form-control">
+        <label for="title">Title</label>
+        <input type="text" maxlength="60" id="title" required />
+      </div>
 
-        <div class="form-control">
-            <label for="url">URL</label>
-            <input type="url" id="url" required>
-        </div>
+      <div class="form-control">
+        <label for="url">URL</label>
+        <input type="url" id="url" required />
+      </div>
 
-        <button class="submit-btn">Save Resource</button>
+      <div class="form-control">
+        <label for="category">Select a category</label>
+        <select id="category">
+          <option></option>
+          <option value="technology">Technology</option>
+          <option value="business">Business</option>
+          <option value="career">Career</option>
+          <option value="healthcare">Health Care</option>
+          <option value="arts_and_culture">Arts & Culture</option>
+          <option value="politics">Politics</option>
+          <option value="history">History</option>
+          <option value="education">Education</option>
+          <option value="miscellaneous">Miscellaneous</option>
+        </select>
+      </div>
+
+      <div class="form-control switch-btn-container">
+        <span>Visible to everyone</span>
+        <div class="switch-btn" id="switch-btn" data-visibility="public">
+          <div class="switch-btn__ring"></div>
+        </div>
+      </div>
+
+      <button class="submit-btn">Save Resource</button>
     </form>
 
-    <script src="./src/popup.js" type="module" ></script>
-</body>
+    <script src="./src/popup.js" type="module"></script>
+  </body>
 </html>

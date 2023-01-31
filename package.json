@@ -2,10 +2,10 @@
   "name": "myllo-extension",
   "version": "1.0.0",
   "description": "",
-  "main": "background.js",
+  "main": "./src/popup.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build && rm -rf ./chrome/dist && mv dist ./chrome"
   },
   "repository": {
     "type": "git",
