@@ -146,10 +146,24 @@ select {
   border: none;
   border-radius: 5px;
   margin-block-start: 0px;
-  padding: 10px;
   cursor: pointer;
   border-radius: 42px;
   background: linear-gradient(145deg, #0f1623, #121a2a);
   box-shadow: 5px 5px 14px #090d15, -5px -5px 14px #192339;
-  padding: 15px;
+  padding: 17px;
+  position: relative;
+}
+
+.submit-btn.loading {
+  animation: bubble ease-out 1s both alternate infinite;
+}
+
+@keyframes bubble {
+  from {
+    transform: scale(0.95);
+  }
+
+  to {
+    transform: scale(1.04);
+  }
 }
