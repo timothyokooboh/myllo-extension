@@ -23,30 +23,34 @@ switchBtn.addEventListener("click", () => {
 });
 
 const notify = (param) => {
-  const { message, type } = param;
+  return new Promise((resolve) => {
+    const { message, type } = param;
 
-  const toastPayload = {
-    text: message,
-    duration: 6000,
-    close: true,
-    gravity: "top",
-    position: "right",
-    stopOnFocus: true, // Prevents dismissing of toast on hover
-    // onClick: function(){} // Callback after click
-    style: {
-      width: "400",
-    },
-  };
-
-  if (type === "error") {
-    toastPayload.style = {
-      ...toastPayload.style,
-      background: "#000",
-      color: "#FFF",
+    const toastPayload = {
+      text: message,
+      duration: 6000,
+      close: true,
+      gravity: "top",
+      position: "right",
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      // onClick: function(){} // Callback after click
+      style: {
+        width: "400",
+      },
     };
-  }
 
-  Toastify(toastPayload).showToast();
+    if (type === "error") {
+      toastPayload.style = {
+        ...toastPayload.style,
+        background: "#000",
+        color: "#FFF",
+      };
+    }
+
+    Toastify(toastPayload).showToast();
+
+    resolve();
+  });
 };
 
 const handleSubmit = async (event) => {
@@ -60,16 +64,6 @@ const handleSubmit = async (event) => {
       const addResource = functions.httpsCallable("addResource");
       const addToReadingList = functions.httpsCallable("addToReadingList");
 
-      console.log({
-        title: titleField.value,
-        url: urlField.value,
-        category: categoryField.value,
-        visibility: isVisibilityPublic ? "public" : "private",
-        description: "",
-        tags: [],
-        user,
-      });
-
       const res = await addResource({
         title: titleField.value,
         url: urlField.value,
@@ -80,21 +74,21 @@ const handleSubmit = async (event) => {
         user,
       });
 
-      console.log(res.data);
-
       const result = await addToReadingList({
         resource_id: res.data.doc_ref_id,
         author_id: user.uid,
         uid: user.uid,
       });
 
-      console.log(result.data);
-      notify({ message: "You added to your reading list 👍", type: "success" });
-
-      setTimeout(() => {
-        window.close();
-      }, 5000);
-      window.close();
+      notify({
+        message: "You added to your reading list 👍",
+        type: "success",
+      }).then(() => {
+        setTimeout(() => {
+          console.log("close");
+          window.close();
+        }, 5000);
+      });
     } catch (err) {
       notify({
         message: "Something went wrong. Please try again",
@@ -105,7 +99,7 @@ const handleSubmit = async (event) => {
       submitBtn.classList.remove("loading");
     }
   } else {
-    // alert("you must be signed in");
+    alert("you must be signed in");
   }
 };
 
@@ -120,8 +114,6 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 });
 
 chrome.storage.local.get(["myllo_auth_user"]).then((result) => {
-  console.log(result);
-  console.log(result?.myllo_auth_user?.uid);
   if (result?.myllo_auth_user?.uid) {
     user = result?.myllo_auth_user;
   }
