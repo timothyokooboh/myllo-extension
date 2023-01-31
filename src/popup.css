@@ -127,7 +127,7 @@ select {
   height: 8px;
   border-radius: 50%;
   border: 1px solid dodgerblue;
-  transition: transform 0.3s;
+  transition: all 0.3s;
 }
 
 .switch-btn[data-visibility="public"] .switch-btn__ring {
