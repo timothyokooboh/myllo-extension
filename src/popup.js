@@ -26,6 +26,8 @@ const handleSubmit = async (event) => {
     const addResource = functions.httpsCallable("addResource");
     const addToReadingList = functions.httpsCallable("addToReadingList");
 
+    return;
+
     const res = await addResource({
       title: titleField.value,
       url: urlField.value,

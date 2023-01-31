@@ -5,28 +5,47 @@
 }
 
 body {
-  width: 300px;
-  background-color: #fff;
+  width: 350px;
+  min-height: 100vh;
+  background-color: #1a243b;
   padding: 15px 25px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
 }
 
-h1 {
-  font-size: 16px;
-  color: #333;
-  margin-block-start: 0px;
-  margin-block-end: 30px;
-  text-transform: capitalize;
+.header {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 15px;
 }
 
-h1 > .icon {
-  display: block;
-  margin-block-end: 10px;
+.app {
+  --color: #eee;
+
+  padding: 20px 30px;
+  /*background: ##111827;
+  border-radius: 10px;
+  box-shadow: -3px -3px 7px #ffffff73, 2px 2px 5px rgba(94, 104, 121, 0.288);*/
+  border-radius: 42px;
+  background: linear-gradient(145deg, #0f1623, #121a2a);
+  box-shadow: 5px 5px 14px #090d15, -5px -5px 14px #192339;
+}
+
+.header {
+  color: var(--color);
+}
+
+.header img {
+  margin-right: 5px;
+}
+
+h1 {
+  font-size: 14px;
+  color: var(--color);
+  text-transform: uppercase;
+  text-align: center;
+  margin-block-end: 25px;
 }
 
 form {
@@ -34,44 +53,59 @@ form {
 }
 
 .form-control {
-  margin-block-end: 20px;
+  margin-block-end: 40px;
   width: 100%;
+  height: 50px;
+  position: relative;
 }
 
 .form-control > label {
   display: block;
   margin-bottom: 5px;
-  color: #0f0f0f;
+  color: var(--color);
 }
 
 .form-control > input {
+  height: 100%;
   width: 100%;
-  padding: 10px;
+  padding-inline: 20px;
+  font-size: 14px;
+  outline: none;
   border: none;
-  background-color: #eee;
-  border-radius: 5px;
-  transition: outline 0.2s ease;
-}
+  color: var(--color);
+  /* background: ##111827;
+  border-radius: 25px;
+  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #ffffff73;*/
 
-.form-control > input:focus {
-  outline: 2px solid dodgerblue;
+  border-radius: 42px;
+  background: linear-gradient(145deg, #0f1623, #121a2a);
+  box-shadow: 5px 5px 14px #090d15, -5px -5px 14px #192339;
 }
 
 select {
+  font-size: 14px;
   width: 100%;
-  padding: 7px;
+  padding: 15px;
+  border: none;
+  outline: none;
+  border-radius: 33px;
+  color: var(--color);
+  border-radius: 42px;
+  background: linear-gradient(145deg, #0f1623, #121a2a);
+  box-shadow: 5px 5px 14px #090d15, -5px -5px 14px #192339;
 }
 
 .switch-btn-container {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-top: 5px;
+  margin-top: 50px;
+  margin-bottom: 30px;
 }
 
 .switch-btn-container > span {
   margin-right: 10px;
-  color: #0f0f0f;
+  color: var(--color);
 }
 
 .switch-btn {
@@ -83,17 +117,14 @@ select {
   display: flex;
   align-items: center;
   padding-inline: 2px;
-  transition: background-color 0.2s ease-out;
 }
 
 .switch-btn[data-visibility="public"] {
-  background-color: rgb(207, 235, 240);
 }
 
 .switch-btn__ring {
   width: 8px;
   height: 8px;
-  background: #fff;
   border-radius: 50%;
   border: 1px solid dodgerblue;
   transition: transform 0.3s;
@@ -101,6 +132,7 @@ select {
 
 .switch-btn[data-visibility="public"] .switch-btn__ring {
   transform: translateX(16px);
+  background-color: #fff;
 }
 
 .switch-btn[data-visibility="private"] .switch-btn__ring {
@@ -109,12 +141,15 @@ select {
 
 .submit-btn {
   width: 100%;
-  color: #fff;
-  background-color: dodgerblue;
+  color: var(--color);
   outline: none;
   border: none;
   border-radius: 5px;
-  margin-block-start: 20px;
+  margin-block-start: 0px;
   padding: 10px;
   cursor: pointer;
+  border-radius: 42px;
+  background: linear-gradient(145deg, #0f1623, #121a2a);
+  box-shadow: 5px 5px 14px #090d15, -5px -5px 14px #192339;
+  padding: 15px;
 }
