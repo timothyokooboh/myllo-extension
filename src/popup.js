@@ -74,10 +74,17 @@ const handleSubmit = async (event) => {
         user,
       });
 
-      const result = await addToReadingList({
+      await addToReadingList({
         resource_id: res.data.doc_ref_id,
         author_id: user.uid,
         uid: user.uid,
+      });
+
+      window.postMessage({
+        type: "myllo_add_to_reading_list",
+        data: {
+          user_id: user.uid,
+        },
       });
 
       notify({
@@ -85,7 +92,6 @@ const handleSubmit = async (event) => {
         type: "success",
       }).then(() => {
         setTimeout(() => {
-          console.log("close");
           window.close();
         }, 5000);
       });
