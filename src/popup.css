@@ -6,7 +6,7 @@
 
 body {
   width: 350px;
-  min-height: 100vh;
+
   background-color: #1a243b;
   padding: 15px 25px;
   font-family: Arial, Helvetica, sans-serif;
@@ -152,6 +152,11 @@ select {
   box-shadow: 5px 5px 14px #090d15, -5px -5px 14px #192339;
   padding: 17px;
   position: relative;
+  transition: transform 0.3s ease-out;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
 }
 
 .submit-btn.loading {

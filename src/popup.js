@@ -2,6 +2,7 @@ import { functions } from "./firebase";
 import Toastify from "toastify-js";
 import "toastify-js/src/toastify.css";
 
+const app = document.querySelector("#app");
 const form = document.querySelector("#form");
 const titleField = document.querySelector("#title");
 const urlField = document.querySelector("#url");
@@ -19,6 +20,28 @@ switchBtn.addEventListener("click", () => {
     switchBtn.setAttribute("data-visibility", "public");
   } else {
     switchBtn.setAttribute("data-visibility", "private");
+  }
+});
+
+chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+  // since only one tab should be active and in the current window at once
+  // the return variable should only have one entry
+  const activeTab = tabs[0];
+  titleField.value = activeTab?.title?.slice(0, 61) || "";
+  urlField.value = activeTab?.url || "";
+});
+
+chrome.storage.local.get(["myllo_auth_user"]).then((result) => {
+  if (result?.myllo_auth_user?.uid) {
+    user = result?.myllo_auth_user;
+  } else {
+    const button = document.createElement("button");
+    button.textContent = "Sign In";
+    button.classList.add("submit-btn");
+    button.addEventListener("click", () => {
+      window.open("https://myllo.co?from=extension-sign-in", "_blank");
+    });
+    app.replaceChildren(button);
   }
 });
 
@@ -56,9 +79,11 @@ const notify = (param) => {
 const handleSubmit = async (event) => {
   event.preventDefault();
 
+  return;
+
   if (user) {
     try {
-      submitBtn.textContent = "Loading...";
+      submitBtn.textContent = "Saving...";
       submitBtn.classList.add("loading");
 
       const addResource = functions.httpsCallable("addResource");
@@ -110,17 +135,3 @@ const handleSubmit = async (event) => {
 };
 
 form.addEventListener("submit", handleSubmit);
-
-chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-  // since only one tab should be active and in the current window at once
-  // the return variable should only have one entry
-  const activeTab = tabs[0];
-  titleField.value = activeTab?.title?.slice(0, 61) || "";
-  urlField.value = activeTab?.url || "";
-});
-
-chrome.storage.local.get(["myllo_auth_user"]).then((result) => {
-  if (result?.myllo_auth_user?.uid) {
-    user = result?.myllo_auth_user;
-  }
-});
