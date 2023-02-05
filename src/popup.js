@@ -13,6 +13,7 @@ const visibilityLabel = document.querySelector("#visibility-label");
 let isVisibilityPublic = true;
 let user = null;
 
+//
 const notify = (param) => {
   return new Promise((resolve) => {
     const { message, type } = param;
