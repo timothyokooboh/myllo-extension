@@ -1,5 +1,7 @@
 export default {
+  base: "",
+  root: "src",
   build: {
-    outDir: "./chrome/dist",
+    outDir: "../chrome/dist",
   },
 };
