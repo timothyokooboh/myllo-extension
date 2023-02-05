@@ -2,48 +2,16 @@ import { functions } from "./firebase";
 import Toastify from "toastify-js";
 import "toastify-js/src/toastify.css";
 
-const app = document.querySelector("#app");
+const main = document.querySelector("main");
 const form = document.querySelector("#form");
 const titleField = document.querySelector("#title");
 const urlField = document.querySelector("#url");
 const categoryField = document.querySelector("#category");
 const switchBtn = document.querySelector("#switch-btn");
 const submitBtn = document.querySelector("#submit-btn");
-
+const visibilityLabel = document.querySelector("#visibility-label");
 let isVisibilityPublic = true;
 let user = null;
-
-switchBtn.addEventListener("click", () => {
-  isVisibilityPublic = !isVisibilityPublic;
-
-  if (isVisibilityPublic) {
-    switchBtn.setAttribute("data-visibility", "public");
-  } else {
-    switchBtn.setAttribute("data-visibility", "private");
-  }
-});
-
-chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-  // since only one tab should be active and in the current window at once
-  // the return variable should only have one entry
-  const activeTab = tabs[0];
-  titleField.value = activeTab?.title?.slice(0, 61) || "";
-  urlField.value = activeTab?.url || "";
-});
-
-chrome.storage.local.get(["myllo_auth_user"]).then((result) => {
-  if (result?.myllo_auth_user?.uid) {
-    user = result?.myllo_auth_user;
-  } else {
-    const button = document.createElement("button");
-    button.textContent = "Sign In";
-    button.classList.add("submit-btn");
-    button.addEventListener("click", () => {
-      window.open("https://myllo.co?from=extension-sign-in", "_blank");
-    });
-    app.replaceChildren(button);
-  }
-});
 
 const notify = (param) => {
   return new Promise((resolve) => {
@@ -56,7 +24,6 @@ const notify = (param) => {
       gravity: "top",
       position: "right",
       stopOnFocus: true, // Prevents dismissing of toast on hover
-      // onClick: function(){} // Callback after click
       style: {
         width: "400",
       },
@@ -76,10 +43,43 @@ const notify = (param) => {
   });
 };
 
+chrome.storage.local.get(["myllo_auth_user"]).then((result) => {
+  if (result?.myllo_auth_user?.uid) {
+    user = result?.myllo_auth_user;
+
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      // since only one tab should be active and in the current window at once
+      // the return variable should only have one entry
+      const activeTab = tabs[0];
+      titleField.value = activeTab?.title?.slice(0, 61) || "";
+      urlField.value = activeTab?.url || "";
+    });
+  } else {
+    const template = document.querySelector("#sign-in-template");
+    const clone = template.content.cloneNode(true);
+    const button = clone.querySelector("#sign-in-btn");
+
+    button.addEventListener("click", () => {
+      window.open("https://myllo.co?from=extension-sign-in", "_blank");
+    });
+    main.replaceChildren(clone);
+  }
+});
+
+switchBtn.addEventListener("click", () => {
+  isVisibilityPublic = !isVisibilityPublic;
+
+  if (isVisibilityPublic) {
+    switchBtn.setAttribute("data-visibility", "public");
+    visibilityLabel.textContent = "Yes";
+  } else {
+    switchBtn.setAttribute("data-visibility", "private");
+    visibilityLabel.textContent = "No";
+  }
+});
+
 const handleSubmit = async (event) => {
   event.preventDefault();
-
-  return;
 
   if (user) {
     try {
@@ -130,7 +130,10 @@ const handleSubmit = async (event) => {
       submitBtn.classList.remove("loading");
     }
   } else {
-    alert("you must be signed in");
+    notify({
+      message: "You must be signed in on https://myllo.co",
+      type: "error",
+    });
   }
 };
 

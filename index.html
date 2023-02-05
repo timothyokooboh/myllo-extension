@@ -8,10 +8,6 @@
     <title>Myllo Extension</title>
   </head>
   <body>
-    <template id="sign-in-template">
-      <button class="submit-btn" id="sign-in-btn">Sign In</button>
-    </template>
-
     <div class="app" id="app">
       <header class="header">
         <img
@@ -22,43 +18,55 @@
         />
         <span>MYLLO</span>
       </header>
-      <h1>Add to your reading list</h1>
-      <form id="form">
-        <div class="form-control">
-          <label for="title">Title</label>
-          <input type="text" maxlength="60" id="title" required />
-        </div>
 
-        <div class="form-control">
-          <label for="url">URL</label>
-          <input type="url" id="url" required />
-        </div>
+      <main>
+        <section>
+          <template id="sign-in-template">
+            <button class="sign-in-btn" id="sign-in-btn">Sign In</button>
+          </template>
+        </section>
 
-        <div class="form-control">
-          <label for="category">Select a category</label>
-          <select id="category">
-            <option></option>
-            <option value="technology">Technology</option>
-            <option value="business">Business</option>
-            <option value="career">Career</option>
-            <option value="healthcare">Health Care</option>
-            <option value="arts_and_culture">Arts & Culture</option>
-            <option value="politics">Politics</option>
-            <option value="history">History</option>
-            <option value="education">Education</option>
-            <option value="miscellaneous">Miscellaneous</option>
-          </select>
-        </div>
+        <section>
+          <h1>Add to your reading list</h1>
+          <form id="form">
+            <div class="form-control">
+              <label for="title">Title</label>
+              <input type="text" maxlength="60" id="title" required />
+            </div>
 
-        <div class="switch-btn-container">
-          <span>Visible to everyone</span>
-          <div class="switch-btn" id="switch-btn" data-visibility="public">
-            <div class="switch-btn__ring"></div>
-          </div>
-        </div>
+            <div class="form-control">
+              <label for="url">URL</label>
+              <input type="url" id="url" required />
+            </div>
 
-        <button class="submit-btn" id="submit-btn">Save Resource</button>
-      </form>
+            <div class="form-control">
+              <label for="category">Select a category</label>
+              <select id="category">
+                <option></option>
+                <option value="technology">Technology</option>
+                <option value="business">Business</option>
+                <option value="career">Career</option>
+                <option value="healthcare">Health Care</option>
+                <option value="arts_and_culture">Arts & Culture</option>
+                <option value="politics">Politics</option>
+                <option value="history">History</option>
+                <option value="education">Education</option>
+                <option value="miscellaneous">Miscellaneous</option>
+              </select>
+            </div>
+
+            <div class="switch-btn-container">
+              <span>Visible to everyone?</span>
+              <div class="switch-btn" id="switch-btn" data-visibility="public">
+                <div class="switch-btn__ring"></div>
+              </div>
+            </div>
+            <div class="visibility-label" id="visibility-label">Yes</div>
+
+            <button class="submit-btn" id="submit-btn">Save Resource</button>
+          </form>
+        </section>
+      </main>
     </div>
 
     <script src="./src/popup.js" type="module"></script>
