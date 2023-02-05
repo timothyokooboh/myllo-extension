@@ -5,7 +5,8 @@
   "main": "./src/popup.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && rm -rf ./chrome/dist && mv dist ./chrome"
+    "build:watch": "vite build --watch",
+    "build": "vite build"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,6 @@
   "dependencies": {
     "firebase": "^9.16.0",
     "toastify-js": "^1.12.0",
-    "vite": "^4.0.4"
+    "vite": "^4.1.1"
   }
 }
