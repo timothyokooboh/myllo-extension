@@ -4,3 +4,4 @@ chrome/dist/
 .prettierrc.js
 .env
 yarn-error.log
+chrome.zip
