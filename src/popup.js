@@ -106,13 +106,6 @@ const handleSubmit = async (event) => {
         uid: user.uid,
       });
 
-      window.postMessage({
-        type: "myllo_add_to_reading_list",
-        data: {
-          user_id: user.uid,
-        },
-      });
-
       notify({
         message: "You added to your reading list 👍",
         type: "success",

@@ -72,10 +72,6 @@ form {
   outline: none;
   border: none;
   color: var(--color);
-  /* background: ##111827;
-  border-radius: 25px;
-  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #ffffff73;*/
-
   border-radius: 42px;
   background: linear-gradient(145deg, #0f1623, #121a2a);
   box-shadow: 5px 5px 14px #090d15, -5px -5px 14px #192339;
@@ -92,6 +88,10 @@ select {
   border-radius: 42px;
   background: linear-gradient(145deg, #0f1623, #121a2a);
   box-shadow: 5px 5px 14px #090d15, -5px -5px 14px #192339;
+}
+
+select option {
+  color: black; /* for Windows OS */
 }
 
 .switch-btn-container {
